@@ -2,7 +2,7 @@ package greenergrass
 
 import "testing"
 
-const targetTestVersion = 2
+const targetTestVersion = 3
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
@@ -36,9 +36,17 @@ func TestSeparateName(t *testing.T) {
 }
 
 func BenchmarkSeparateName(b *testing.B) {
+	b.ReportAllocs()
+	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		for _, ntc := range nameTestCases {
-			New(ntc.input).SeparateName(" ")
-		}
+		New(nameTestCases[2].input).SeparateName(" ")
+	}
+}
+
+func BenchmarkLoadTitleData(b *testing.B) {
+	b.ReportAllocs()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		LoadTitleData()
 	}
 }
