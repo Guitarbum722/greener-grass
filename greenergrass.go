@@ -13,7 +13,7 @@ import (
 	"github.com/tidwall/gjson"
 )
 
-const testVersion = 2
+const testVersion = 3
 
 // Name contains a common list fields that could be combined as a person's full name
 type Name struct {
@@ -157,7 +157,7 @@ func titleFiles(filePath string, isCSV bool) (map[string]struct{}, error) {
 	return titleList, nil
 }
 
-// FormatFullName creates a struct member with a formatted full name.
+// FormatName creates a struct member with a formatted full name.
 func (n *Name) FormatName() {
 	n.formatted = fmt.Sprintf("%v %v %v", n.First, n.Middle, n.Last)
 }
